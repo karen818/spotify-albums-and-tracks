@@ -60,14 +60,40 @@ function bootstrapSpotifySearch(){
 function displayAlbumsAndTracks(event) {
   var appendToMe = $('#albums-and-tracks');
 
-  // These two lines can be deleted. They're mostly for show.
-  console.log("You clicked on:");
-  var artistName = $(event.target).attr('data-spotify-id');//.attr('data-spotify-id'));
-
   var getAlbums = $.ajax({
-      type: GET,
-      dataType: 'jsonp',
-      url: "https://api.spotify.com/v1/artists" + artistName + "/albums"
+      type: 'GET',
+      dataType: 'JSON',
+      url: "https://api.spotify.com/v1/artists/" + artistName + "/albums"
+  }).done(function(data){
+      var albums = data.items;
+      albums.forEach(function(album){
+          var albumName = album.name;
+          var albumImage = album.images[0].url;
+          var albumLi = $("<li>" + albumName  + "<img src='" + albumImage +  "' alt=''></li>");
+
+          var albumID = album.id;
+
+          var getReleaseDate = $.ajax({
+              type: 'GET',
+              dataType: 'JSON',
+              url: "https://api.spotify.com/v1/albums/" + albumID
+          }).done(function(data){
+              var releaseDate = data.release_date;
+
+          appendToMe.append(albumLi);
+          var getTracks = $.ajax({
+              type: 'GET',
+              dataType: 'JSON',
+              url: "https://api.spotify.com/v1/albums/" + albumID + "/tracks"
+          }).done(function(data){
+              var albumTracks = data.items;
+              albumTracks.forEach(function(albumTrack){
+                  albumLi.append(albumTrack.name + "<br>");
+
+              })
+          })
+        })
+      })
   })
 }
 
