@@ -7,9 +7,15 @@ body{
 	padding:0 10px;
 }
 
-h1, h2, h3{
+h1, h2, h3, h5 {
 	line-height:1.2;
 	font-weight: bold;
+}
+
+
+h5 {
+	color: #f9fbe7;
+	text-shadow: 1px 1px #212121;
 }
 
 ul {
@@ -18,11 +24,25 @@ ul {
 
 p {
 	font-weight: bold;
-	color: #fff;
+	color: #f9fbe7;
+	text-shadow: 1px 1px #212121;
 }
 
+label {
+	font-size: 120%;
+}
+
+/* label underline focus color */
+input[type=text],
+input[type=text]:focus:not([read-only]) {
+	color: #f9fbe7;
+  	border-bottom: 1px solid #333;
+  	box-shadow: 0 1px 0 0 #333;
+}
+
+
 #q-results li {
-	color: #fff;
+	color: #f9fbe7;
 	cursor: pointer;
 	text-decoration: none;
 	list-style: none;
@@ -38,8 +58,4 @@ p {
 	cursor: grab;
 	text-decoration: none;
 	list-style: none;
-}
-
-label {
-	font-size: 120%;
 }
