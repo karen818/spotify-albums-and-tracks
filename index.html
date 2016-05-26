@@ -4,26 +4,29 @@
     <meta charset="utf-8">
     <title>These are examples of API's in action</title>
 
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="materialize/css/materialize.min.css">
     <link rel="stylesheet" href="css/style.css">
 
   </head>
-  <body>
-  	<h1> Music Is Fun </h1>
-      <div>
-        <h2>Spotify Artist Search</h2>
-        <div>
-          <label for="spotify-q"></label>
+  <body class="grey darken-1">
+  	<h1 class="center-align lime-text"> Music Is Fun </h1>
+      <div class="col s12 m12 l12">
+        <h2 class="center-align">Spotify Artist Search</h2>
+        <div class="row">
+          <label for="spotify-q" class="lime-text">Search for: </label>
           <input type="text" name="q" value="" id="spotify-q">
-          <input type="button" name="name" value="Search" id="spotify-q-button">
-          <h3>Spotify Search Results:</h3>
+          <a class="waves-effect waves-light btn lime darken-3" id="spotify-q-button"><i class="material-icons left">search</i>Search</a>
+          <h5>Spotify Search Results:</h5>
           <div id="q-results" class="results"></div>
         </div>
-        <hr>
+
       </div>
+     
       <div id='albums-and-tracks'></div>
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js" charset="utf-8"></script>
-      <script src="javascript/app.js" charset="utf-8"></script>
+      <script src="materialize/js/materialize.min.js"></script>
+      <script src="javascript/app.js"></script>
   </body>
 </html>

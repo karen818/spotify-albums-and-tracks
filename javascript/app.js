@@ -83,7 +83,7 @@ function displayAlbumsAndTracks(event) {
               var releaseDate = data.release_date;
 
 
-              var albumLi = $("<li>" + albumName + "(Release Date: " + releaseDate + ")" + "<br><img src='" + albumImage +  "' alt='album artwork' width='300' height='300'><br></li>");
+              var albumLi = $("<br><li><p>ALBUM NAME: </p>" + albumName + "  (Release Date: " + releaseDate + ")" + "<br><img src='" + albumImage +  "' alt='album artwork' width='300' height='300'><br><p>TRACKS: </p></li>");
 
           appendToMe.append(albumLi);
           var getTracks = $.ajax({
