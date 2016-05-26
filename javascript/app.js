@@ -60,16 +60,18 @@ function bootstrapSpotifySearch(){
 function displayAlbumsAndTracks(event) {
   var appendToMe = $('#albums-and-tracks');
 
+  var artistID = $(event.target).attr('data-spotify-id');
+
   var getAlbums = $.ajax({
       type: 'GET',
       dataType: 'JSON',
-      url: "https://api.spotify.com/v1/artists/" + artist.name + "/albums"
+      url: "https://api.spotify.com/v1/artists/" + artistID + "/albums"
   }).done(function(data){
       var albums = data.items;
       albums.forEach(function(album){
           var albumName = album.name;
           var albumImage = album.images[0].url;
-          var albumLi = $("<li>" + albumName  + "<img src='" + albumImage +  "' alt=''></li>");
+
 
           var albumID = album.id;
 
@@ -79,6 +81,9 @@ function displayAlbumsAndTracks(event) {
               url: "https://api.spotify.com/v1/albums/" + albumID
           }).done(function(data){
               var releaseDate = data.release_date;
+
+
+              var albumLi = $("<li>" + albumName + "(Release Date: " + releaseDate + ")" + "<br><img src='" + albumImage +  "' alt='album artwork' width='300' height='300'><br></li>");
 
           appendToMe.append(albumLi);
           var getTracks = $.ajax({
@@ -95,7 +100,7 @@ function displayAlbumsAndTracks(event) {
         })
       })
   })
-}
+} //end displayAlbumsAndTracks function
 
 /* YOU MAY WANT TO CREATE HELPER FUNCTIONS OF YOUR OWN */
 /* THEN CALL THEM OR REFERENCE THEM FROM displayAlbumsAndTracks */
