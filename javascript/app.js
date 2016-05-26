@@ -63,7 +63,7 @@ function displayAlbumsAndTracks(event) {
   var getAlbums = $.ajax({
       type: 'GET',
       dataType: 'JSON',
-      url: "https://api.spotify.com/v1/artists/" + artistName + "/albums"
+      url: "https://api.spotify.com/v1/artists/" + artist.name + "/albums"
   }).done(function(data){
       var albums = data.items;
       albums.forEach(function(album){
